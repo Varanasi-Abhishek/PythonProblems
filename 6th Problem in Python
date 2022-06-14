@@ -1,0 +1,12 @@
+n = int(input())
+student_marks = {}
+for x in range(n):
+    name, *line = input().split()
+    scores = list(map(float, line))
+    student_marks[name] = scores
+query_name = input()
+y=student_marks[query_name][0]
+z=student_marks[query_name][1]
+a=student_marks[query_name][2]
+b=(y+z+a)/3
+print("%.2f"%b)
