@@ -1,0 +1,78 @@
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        if num>3999:
+            return None
+        l=[]
+        y=1
+        while num>0:
+            
+            b=(num%10)*y
+            l.append(b)
+            y=y*10
+            num=num//10
+        s=''
+        l.sort(reverse=True)
+        for i in l:
+            if i==1:
+                s+='I'
+            if i==2:
+                s+='II'
+            if i==3:
+                s+='III'
+            if i==4:
+                s+='IV'
+            if i==5:
+                s+='V'
+            if i==6:
+                s+='VI'
+            if i==7:
+                s+='VII'
+            if i==8:
+                s+='VIII'
+            if i==9:
+                s+='IX'
+            if i==10:
+                s+='X'
+            if i==20:
+                s+='XX'
+            if i==30:
+                s+='XXX'
+            if i==40:
+                s+='XL'
+            if i==50:
+                s+='L'
+            if i==60:
+                s+='LX'
+            if i==70:
+                s+='LXX'
+            if i==80:
+                s+='LXXX'
+            if i==90:
+                s+='XC'
+            if i==100:
+                s+='C'
+            if i==200:
+                s+='CC'
+            if i==300:
+                s+='CCC'
+            if i==400:
+                s+='CD'
+            if i==500:
+                s+='D'
+            if i==600:
+                s+='DC'
+            if i==700:
+                s+='DCC'
+            if i==800:
+                s+='DCCC'
+            if i==900:
+                s+='CM'
+            if i==1000:
+                s+='M'
+            if i==2000:
+                s+='MM'
+            if i==3000:
+                s+='MMM'
+        
+        return s
+            
