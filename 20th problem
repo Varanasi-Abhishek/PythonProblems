@@ -1,0 +1,11 @@
+class Solution(object):
+    def reverse(self, x):
+        sign = [1,-1][x < 0]
+        x = abs(x)
+        res = 0
+        while x != 0:
+            divs = x%10
+            res = res * 10 + divs
+            x //= 10
+        res = sign * res
+        return res if -(2**31)-1 < res < (2**31) else 0
