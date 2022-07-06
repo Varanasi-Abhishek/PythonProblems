@@ -1,0 +1,29 @@
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        
+        def find_n_sum(lo, hi, target, n, out, res):
+            if hi - lo + 1 < n or n < 2 or target < nums[lo] * n or target > nums[hi] * n:
+                return
+
+            if n == 2:
+                while lo < hi:
+                    summation = nums[lo] + nums[hi]
+                    if summation == target:
+                        res.append(out + [nums[lo], nums[hi]])
+                        lo += 1
+                        while lo < hi and nums[lo] == nums[lo - 1]:
+                            lo += 1
+                    elif summation < target:
+                        lo += 1
+                    else:
+                        hi -= 1
+            else:
+                for i in range(lo, hi + 1):
+                    if i == lo or (i > lo and nums[i - 1] != nums[i]):
+                        find_n_sum(i + 1, hi, target - nums[i], n - 1, out + [nums[i]], res)
+
+        nums.sort()
+        res = []
+        find_n_sum(0, len(nums) - 1, target, 4, [], res)
+        return res
+        
